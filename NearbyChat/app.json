@@ -1,0 +1,23 @@
+{
+  "expo": {
+    "name": "NearbyChat",
+    "slug": "nearbychat",
+    "version": "1.0.0",
+    "sdkVersion": "55.0.0",
+    "newArchEnabled": false,
+    "orientation": "portrait",
+    "ios": { "supportsTablet": false },
+    "android": {
+      "permissions": [
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION"
+      ]
+    },
+    "plugins": [
+      "react-native-maps",
+      ["expo-location", {
+        "locationWhenInUsePermission": "NearbyChat a besoin de ta position pour te placer dans la bonne zone de chat."
+      }]
+    ]
+  }
+}
