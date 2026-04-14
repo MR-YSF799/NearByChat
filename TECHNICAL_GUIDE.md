@@ -68,7 +68,7 @@ npm run start:dev     # Lance NestJS
 
 ### Lancer le Frontend :
 ```bash
-cd NearbyChat
+cd NearbyChat_Frontend
 npx expo start
 ```
 

@@ -24,11 +24,15 @@ export default function LoginScreen({ navigation }) {
     if (!username || !password) { setError('Remplis tous les champs'); return; }
     setLoading(true); setError('');
     try {
+      //send a login request to the backend with the username and password 
       const res = await loginUser({ username, password });
+      //attach the received JWT to future API requests and save user info in the store 
       setAuthToken(res.data.access_token);
       setToken(res.data.access_token);
       setUser(res.data.user);
+      // connect the socket with the new token to receive real-time updates 
       socketService.connect(res.data.access_token);
+      
       setLoading(false);
     } catch (err) {
       setError(err.response?.data?.message || 'Erreur de connexion');
@@ -48,18 +52,24 @@ export default function LoginScreen({ navigation }) {
       </View>
 
       <View style={styles.form}>
+        
         {error ? <Text style={styles.error}>{error}</Text> : null}
         <TextInput
-          style={styles.input} placeholder="Nom d'utilisateur"
+          style={styles.input} 
+          placeholder="Nom d'utilisateur"
           placeholderTextColor="#888" value={username}
           onChangeText={setUsername} autoCapitalize="none"
         />
         <TextInput
-          style={styles.input} placeholder="Mot de passe"
+          style={styles.input} 
+          placeholder="Mot de passe"
           placeholderTextColor="#888" value={password}
           onChangeText={setPassword} secureTextEntry
         />
-        <TouchableOpacity style={styles.btn} onPress={handleLogin} disabled={loading}>
+        <TouchableOpacity 
+        style={styles.btn} 
+        onPress={handleLogin} 
+        disabled={loading}>
           {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.btnText}>Se connecter</Text>}
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Register')}>
