@@ -15,7 +15,7 @@ export class MessageService {
 
   // Sauvegarder un nouveau message
   async createMessage(text: string, userId: string, zoneId: string): Promise<Message> {
-    const message = this.messageRepository.create({
+    const message = this.messageRepository.create({// Créer une nouvelle instance de message
       text,
       user: { id: userId },
       zone: { id: zoneId },

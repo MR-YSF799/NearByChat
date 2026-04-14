@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
-
+//userRepository : C'est ton outil pour "discuter" avec SQL sans écrire de SQL
 @Injectable()
 export class UserService {
   constructor(
@@ -26,7 +26,7 @@ export class UserService {
 
   // Créer un utilisateur
   async create(user: Partial<User>): Promise<User> {
-    const newUser = this.userRepository.create(user);
-    return this.userRepository.save(newUser);
+    const newUser = this.userRepository.create(user);// preparer l'objet 
+    return this.userRepository.save(newUser);// sauvgarde reelle 
   }
 }

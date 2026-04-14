@@ -28,7 +28,7 @@ export class Zone {
   @Column({
     type: 'geometry',
     spatialFeatureType: 'Polygon',
-    srid: 4326,
+    srid: 4326,//systeme gps standard
   })
   polygon: Polygon;
 
